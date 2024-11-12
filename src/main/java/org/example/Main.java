@@ -112,16 +112,6 @@ public class Main {
             100,Jami,Clowser,jclowser2r@wix.com
         """;
 
-        // array of team names - OBS: ASKED CHATGPT TO CREATE 20 RANDOM TEAM NAMES
-        String[] teamNames = {
-                "The Thunderbolts", "The Black Panthers", "The Storm Chasers", "The Firehawks", "The Night Owls",
-                "The Silver Serpents", "The Galactic Guardians", "The Red Dragons", "The Golden Eagles", "The Ice Titans",
-                "The Electric Sharks", "The Wild Wolves", "The Crimson Kings", "The Mystic Falcons", "The Savage Tigers",
-                "The Phoenix Force", "The Steel Titans", "The Viper Squadron", "The Alpha Wolves", "The Dark Knights"
-        };
-
-
-
         // Initialise a list to store person data from the CSV
         List<String[]> people = new ArrayList<>();
 
@@ -141,61 +131,40 @@ public class Main {
         Collections.shuffle(people);
 
 
-        // Define the number of teams and members per team
+        // Define the number of teams and players per team
         int numTeams = 20;
-        int teamMembers = 5;
+        int teamPlayers = 5;
+
+        // array of team names - OBS: ASKED CHATGPT TO CREATE 20 RANDOM TEAM NAMES
+        String[] teamNames = {
+                "The Thunderbolts", "The Black Panthers", "The Storm Chasers", "The Firehawks", "The Night Owls",
+                "The Silver Serpents", "The Galactic Guardians", "The Red Dragons", "The Golden Eagles", "The Ice Titans",
+                "The Electric Sharks", "The Wild Wolves", "The Crimson Kings", "The Mystic Falcons", "The Savage Tigers",
+                "The Phoenix Force", "The Steel Titans", "The Viper Squadron", "The Alpha Wolves", "The Dark Knights"
+        };
 
 
-
-        //ArrayList that stores all teams, each represented as an ArrayList of String[] (team members)
-//        ArrayList<ArrayList<String[]>> teams = new ArrayList<>();
-//
-//
-//        // Loop to create teams by assigning the randomised people
-//        for (int i = 0; i < numTeams; i++) {
-//            ArrayList<String[]> team = new ArrayList<>(); // new team
-//            for (int j = 0; j < teamMembers; j++) {
-//                team.add(people.removeFirst()); // Add a person to the team and remove them from the pool
-//            }
-//            teams.add(team); // Add the team to the team list
-//        }
-//
-//
-//
-//        // Iterates through all the teams and prints their details
-//        for (int i = 0; i < numTeams; i++) {
-//            System.out.println("Team: " + teamNames[i]); // print teams name
-//            ArrayList<String[]> currTeamMembers = teams.get(i);  // get current teams members
-//            for (String[] teamMember : currTeamMembers) {
-//                // Print the details of each team member (ID, first name, last name, and email)
-//                System.out.println("ID: " + teamMember[0] + ", Name: " + teamMember[1] + " " + teamMember[2] + ", Email: " + teamMember[3]);
-//            }
-//            System.out.println(); // empty line
-//        }
+        //Arraylist that stores team and players per team
         ArrayList<String> teams = new ArrayList<>();
 
-        // Loop to create teams and add members as formatted strings
+        //Iterates though the number of teams (20) to create each team
         for (int i = 0; i < numTeams; i++) {
-            // Add the team's name as the header
+            //adds team number and name
             teams.add("Team " + (i + 1) + " : " + teamNames[i]);
-
-            for (int j = 0; j < teamMembers; j++) {
-                String[] member = people.removeFirst(); // Get and remove the first person from the list
-
-                // Format the member's information as a single string
-                String memberInfo = "ID: " + member[0] + ", Name: " + member[1] + " " + member[2] + ", Email: " + member[3];
-
-                // Add the formatted member information to the list
-                teams.add(memberInfo);
+            for (int j = 0; j < teamPlayers; j++) {
+                // remove and get the first person from the list of people
+                String[] player = people.removeFirst();
+                //The way player info will be displayed
+                String playerInfo = "ID: " + player[0] + ", Name: " + player[1] + " " + player[2] + ", Email: " + player[3];
+                teams.add(playerInfo);
             }
-
-            // Add an empty line to separate teams visually
+            //blank line between teams
             teams.add("");
         }
 
-        // Print all team data from the ArrayList<String>
-        for (String line : teams) {
-            System.out.println(line);
+        //Print all information stored in the arraylist teams
+        for (String info : teams) {
+            System.out.println(info);
         }
     }
 }
